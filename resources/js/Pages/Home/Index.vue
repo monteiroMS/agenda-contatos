@@ -2,6 +2,17 @@
 import { Head } from '@inertiajs/vue3'
 import Layout from '../../Layout/App.vue'
 import { Button } from '@/components/ui/button/index'
+import ContactsTable from './Partials/ContactsTable.vue';
+import { provide } from 'vue';
+
+const props = defineProps({
+    contatos: {
+        type: Array,
+        default: []
+    }
+})
+
+provide('contatos', props.contatos);
 
 </script>
 
@@ -14,7 +25,7 @@ import { Button } from '@/components/ui/button/index'
           </h1>
         </div>
         <div class="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
-            <div class="flex flex-col items-center gap-1 text-center">
+            <div class="flex flex-col items-center gap-1 text-center" v-if="!contatos.length">
                 <h3 class="text-2xl font-bold tracking-tight">
                     Você ainda não possui nenhum contato cadastrado :c
                 </h3>
@@ -25,6 +36,8 @@ import { Button } from '@/components/ui/button/index'
                     Novo contato
                 </Button>
             </div>
+            <ContactsTable v-else
+            />
         </div>
     </Layout>
 </template>
