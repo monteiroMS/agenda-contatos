@@ -2,8 +2,9 @@
 import { Head } from '@inertiajs/vue3'
 import Layout from '../../Layout/App.vue'
 import { Button } from '@/components/ui/button/index'
-import ContactsTable from './Partials/ContactsTable.vue';
-import { provide } from 'vue';
+import ContactsTable from './Partials/ContactsTable.vue'
+import { provide } from 'vue'
+import { Plus } from 'lucide-vue-next'
 
 const props = defineProps({
     contatos: {
@@ -19,10 +20,13 @@ provide('contatos', props.contatos);
 <template>
     <Layout>
         <Head title="Meus contatos | Agenda de contatos" />
-        <div class="flex items-center">
-          <h1 class="text-lg font-semibold md:text-2xl">
+        <div class="flex items-center justify-between">
+            <h1 class="text-lg font-semibold md:text-2xl">
             Meus contatos
-          </h1>
+            </h1>
+            <Button>
+                <Plus /> Novo contato
+            </Button>
         </div>
         <div class="flex flex-1 items-center justify-center rounded-lg border border-dashed shadow-sm">
             <div class="flex flex-col items-center gap-1 text-center" v-if="!contatos.length">
@@ -33,11 +37,10 @@ provide('contatos', props.contatos);
                     Você pode adicionar novos contatos a qualquer momento
                 </p>
                 <Button class="mt-4">
-                    Novo contato
+                    <Plus /> Novo contato
                 </Button>
             </div>
-            <ContactsTable v-else
-            />
+            <ContactsTable v-else />
         </div>
     </Layout>
 </template>

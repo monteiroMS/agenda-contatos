@@ -13,16 +13,7 @@ class HomeController extends Controller
     public function index()
     {
         return Inertia::render('Home/Index', [
-            'contatos' => [
-                (object) ['nome' => 'Matheus asdasdasdasdasdasdasdasdasdasdasdadasMonteiro', 'email' => 'matasdasdasdasdasdasdasdheuschran@hotmail.com', 'endereco' => 'Rua Paulo Schneidereidereidereidereidereidereidereidereidereidereidereidereidereidereidereidereider, 305 - Apto 204 - Joinville/SC', 'telefone' => '(47) 99642-9380'],
-                (object) ['nome' => 'Matheus Monteiro', 'email' => 'matheuschran@hotmail.com', 'endereco' => 'Rua Paulo Schneider, 305 - Apto 204 - Joinville/SC', 'telefone' => '(47) 99642-9380'],
-                (object) ['nome' => 'Matheus Monteiro', 'email' => 'matheuschran@hotmail.com', 'endereco' => 'Rua Paulo Schneider, 305 - Apto 204 - Joinville/SC', 'telefone' => '(47) 99642-9380'],
-                (object) ['nome' => 'Matheus Monteiro', 'email' => 'matheuschran@hotmail.com', 'endereco' => 'Rua Paulo Schneider, 305 - Apto 204 - Joinville/SC', 'telefone' => '(47) 99642-9380'],
-                (object) ['nome' => 'Matheus Monteiro', 'email' => 'matheuschran@hotmail.com', 'endereco' => 'Rua Paulo Schneider, 305 - Apto 204 - Joinville/SC', 'telefone' => '(47) 99642-9380'],
-                (object) ['nome' => 'Matheus Monteiro', 'email' => 'matheuschran@hotmail.com', 'endereco' => 'Rua Paulo Schneider, 305 - Apto 204 - Joinville/SC', 'telefone' => '(47) 99642-9380'],
-                (object) ['nome' => 'Matheus Monteiro', 'email' => 'matheuschran@hotmail.com', 'endereco' => 'Rua Paulo Schneider, 305 - Apto 204 - Joinville/SC', 'telefone' => '(47) 99642-9380'],
-                (object) ['nome' => 'Matheus Monteiro', 'email' => 'matheuschran@hotmail.com', 'endereco' => 'Rua Paulo Schneider, 305 - Apto 204 - Joinville/SC', 'telefone' => '(47) 99642-9380'],
-            ]
+            'contatos' => []
         ]);
     }
 

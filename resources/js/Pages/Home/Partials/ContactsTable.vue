@@ -69,10 +69,10 @@ const contatos = inject('contatos')
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end">
                             <DropdownMenuLabel>Ações</DropdownMenuLabel>
-                            <DropdownMenuItem>
+                            <DropdownMenuItem class="cursor-pointer">
                                 <Pencil class="text-orange-500" /> Editar
                             </DropdownMenuItem>
-                            <DropdownMenuItem>
+                            <DropdownMenuItem class="cursor-pointer">
                                 <Trash2 class="text-red-500" /> Excluir
                             </DropdownMenuItem>
                             </DropdownMenuContent>

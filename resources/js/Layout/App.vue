@@ -28,9 +28,17 @@ import { Link } from '@inertiajs/vue3'
             </Link>
           </nav>
         </div>
+        <div>
+            <div class="px-4 py-2 text-xs text-muted-foreground">
+                Desenvolvido por
+                <a href="https://github.com/monteiroMS" target="_blank" class="text-primary hover:underline">
+                    monteiroMS
+                </a>
+            </div>
+        </div>
       </div>
     </div>
-    <div class="flex flex-col">
+        <div class="flex flex-col">
       <header class="flex h-14 items-center gap-4 border-b bg-muted/40 px-4 lg:h-[60px] lg:px-6">
         <Sheet>
           <SheetTrigger as-child>
