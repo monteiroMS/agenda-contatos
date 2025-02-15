@@ -19,10 +19,10 @@ return new class extends Migration
             $table->string('cep');
             $table->string('logradouro');
             $table->string('complemento')->nullable();
+            $table->string('numero')->nullable();
             $table->string('bairro');
             $table->string('localidade');
             $table->string('uf');
-            $table->string('estado');
             $table->timestamps();
             $table->softDeletes();
         });

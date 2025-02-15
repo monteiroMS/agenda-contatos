@@ -18,10 +18,10 @@ class User extends Model
         'telefone',
         'cep',
         'logradouro',
+        'numero',
         'complemento',
         'bairro',
         'localidade',
         'uf',
-        'estado',
     ];
 }
