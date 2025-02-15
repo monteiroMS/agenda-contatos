@@ -17,7 +17,7 @@ import {
 } from '@/components/ui/table';
 import { MoreHorizontal, SquareUserRound, Trash2, Pencil } from 'lucide-vue-next'
 import { inject } from 'vue'
-import Pagination from './Pagination.vue';
+import Pagination from '../../../components/common/Pagination.vue';
 
 const contatos = inject('contatos')
 </script>
