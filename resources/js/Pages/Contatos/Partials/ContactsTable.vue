@@ -17,6 +17,7 @@ import {
 } from '@/components/ui/table';
 import { MoreHorizontal, SquareUserRound, Trash2, Pencil } from 'lucide-vue-next'
 import { inject } from 'vue'
+import Pagination from './Pagination.vue';
 
 const contatos = inject('contatos')
 </script>
@@ -81,9 +82,9 @@ const contatos = inject('contatos')
                 </TableRow>
             </TableBody>
         </Table>
-        <div class="text-xs text-muted-foreground text-right">
-            Mostrando <strong>1-10</strong> de <strong>32</strong>
-            contatos
-        </div>
+        <Pagination
+            :list="contatos"
+            :total="contatos.length"
+        />
     </div>
 </template>

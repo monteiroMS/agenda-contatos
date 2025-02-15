@@ -22,7 +22,7 @@ provide('contatos', props.contatos);
         <Head title="Meus contatos | Agenda de contatos" />
         <div class="flex items-center justify-between">
             <h1 class="text-lg font-semibold md:text-2xl">
-            Meus contatos
+                Contatos
             </h1>
             <Button>
                 <Plus /> Novo contato

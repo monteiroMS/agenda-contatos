@@ -5,15 +5,22 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
-class HomeController extends Controller
+class ContatosController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return Inertia::render('Home/Index', [
-            'contatos' => []
+        return Inertia::render('Contatos/Index', [
+            'contatos' => [
+                (object) [
+                    'nome' => 'Matheus Monteiro Schran',
+                    'email' => 'matheuschran@hotmail.com',
+                    'endereco' => 'Rua Paulo Schneider, 305',
+                    'telefone' => '(47) 99642-9380',
+                ]
+            ]
         ]);
     }
 
