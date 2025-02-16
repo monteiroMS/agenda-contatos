@@ -20,6 +20,7 @@ import { inject } from 'vue'
 import Pagination from '../../../components/common/Pagination.vue';
 
 const contatos = inject('contatos')
+const selectContact = inject('selectContact')
 </script>
 
 <template>
@@ -70,10 +71,10 @@ const contatos = inject('contatos')
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end">
                             <DropdownMenuLabel>Ações</DropdownMenuLabel>
-                            <DropdownMenuItem class="cursor-pointer">
+                            <DropdownMenuItem class="cursor-pointer" @click="selectContact(contato, 'edit')">
                                 <Pencil class="text-orange-500" /> Editar
                             </DropdownMenuItem>
-                            <DropdownMenuItem class="cursor-pointer">
+                            <DropdownMenuItem class="cursor-pointer" @click="selectContact(contato, 'delete')">
                                 <Trash2 class="text-red-500" /> Excluir
                             </DropdownMenuItem>
                             </DropdownMenuContent>

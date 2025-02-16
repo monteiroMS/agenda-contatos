@@ -10,10 +10,10 @@ Route::get('/', function () {
 
 Route::prefix('contatos')->group(function () {
     Route::get('/', [ContatosController::class, 'index'])->name('contatos.index');
-    Route::post('/create', [ContatosController::class, 'store'])->name('contatos.create');
-    Route::prefix('{id}', function () {
-        Route::put('/update', [ContatosController::class, 'update'])->name('contatos.update');
-        Route::delete('/delete', [ContatosController::class, 'destroy'])->name('contatos.delete');
+    Route::post('create', [ContatosController::class, 'store'])->name('contatos.create');
+    Route::group(['prefix' => '{id}'], function () {
+        Route::put('update', [ContatosController::class, 'update'])->name('contatos.update');
+        Route::delete('delete', [ContatosController::class, 'destroy'])->name('contatos.delete');
     });
 });
 

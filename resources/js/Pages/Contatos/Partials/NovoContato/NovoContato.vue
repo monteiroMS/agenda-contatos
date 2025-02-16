@@ -7,7 +7,6 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from '@/components/ui/dialog'
 import {
   Form,
@@ -19,10 +18,9 @@ import {
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 import { toast } from '@/components/ui/toast'
-import { Plus } from 'lucide-vue-next'
 import { schema } from './schema'
 import axios from 'axios'
-import { ref } from 'vue'
+import { inject, ref, watch } from 'vue'
 import { ReloadIcon } from '@radix-icons/vue'
 
 const loadingCep = ref(false)
@@ -54,27 +52,50 @@ const buscaCep = async (cep) => {
 const onSubmit = async (form) => {
     try {
         loadingSave.value = true
-        await axios.post(route('contatos.create'), form)
+        if (modalNovoMode.value === 'create') {
+            await axios.post(route('contatos.create'), form)
+        } else {
+            await axios.put(
+                route('contatos.update', { id: contato.value.id }),
+                { id: contato.value.id, ...form }
+            )
+        }
+
+        toast({ title: 'Contato salvo com sucesso!' })
     } catch (error) {
         toast({
             title: 'Erro ao salvar dados do contato',
             description: error.response.data.message,
-            status: 'error',
+            variant: 'destructive',
         })
     } finally {
         loadingSave.value = false
     }
 }
+
+const isModalNovoContatoOpen = inject('isModalNovoContatoOpen')
+const contato = inject('contatoSelecionado')
+const modalNovoMode = inject('modalNovoMode')
+
+watch(contato, (newValue) => {
+    if (modalNovoMode.value === 'edit' && newValue) {
+        formRef.value.setFieldValue('nome', newValue.nome)
+        formRef.value.setFieldValue('email', newValue.email)
+        formRef.value.setFieldValue('telefone', newValue.telefone)
+        formRef.value.setFieldValue('cep', newValue.cep)
+        formRef.value.setFieldValue('logradouro', newValue.logradouro)
+        formRef.value.setFieldValue('numero', newValue.numero)
+        formRef.value.setFieldValue('complemento', newValue.complemento)
+        formRef.value.setFieldValue('bairro', newValue.bairro)
+        formRef.value.setFieldValue('localidade', newValue.localidade)
+        formRef.value.setFieldValue('uf', newValue.uf)
+    }
+})
 </script>
 
 <template>
-  <Form ref="formRef" v-slot="{ handleSubmit }" as="" keep-values :validation-schema="schema">
-    <Dialog>
-      <DialogTrigger as-child>
-        <Button variant="outline">
-            <Plus /> Novo contato
-        </Button>
-      </DialogTrigger>
+  <Form ref="formRef" v-slot="{ handleSubmit }" as="" :validation-schema="schema">
+    <Dialog v-model:open="isModalNovoContatoOpen">
       <DialogContent class="sm:max-w-[800px]">
         <DialogHeader>
             <DialogTitle>Criar novo contato</DialogTitle>

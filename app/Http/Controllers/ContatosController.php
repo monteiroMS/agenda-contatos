@@ -15,7 +15,7 @@ class ContatosController extends Controller
     public function index()
     {
         $contatos = Contato::all();
-        return Inertia::render('Contatos/Index', [
+        return Inertia::render('Contatos/Contatos', [
             'contatos' => $contatos
         ]);
     }
