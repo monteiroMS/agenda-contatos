@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\Contato\AtualizaContatoRequest;
+use App\Http\Requests\Contato\CriaContatoRequest;
+use App\Models\Contato;
 use Inertia\Inertia;
 
 class ContatosController extends Controller
@@ -12,56 +14,37 @@ class ContatosController extends Controller
      */
     public function index()
     {
+        $contatos = Contato::all();
         return Inertia::render('Contatos/Index', [
-            'contatos' => [
-                (object) [
-                    'nome' => 'Matheus Monteiro Schran',
-                    'email' => 'matheuschran@hotmail.com',
-                    'endereco' => 'Rua Paulo Schneider, 305',
-                    'telefone' => '(47) 99642-9380',
-                ]
-            ]
+            'contatos' => $contatos
         ]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CriaContatoRequest $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
+        try {
+            $contato = Contato::create($request->validated());
+            return response()->json($contato);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Erro ao criar contato: ' . $e->getMessage()], 404);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AtualizaContatoRequest $request, string $id)
     {
-        //
+        try {
+            $contato = Contato::findOrFail($id);
+            $contato->update($request->validated());
+            return response()->json($contato);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Erro ao atualizar contato: ' . $e->getMessage()], 404);
+        }
     }
 
     /**
@@ -69,6 +52,12 @@ class ContatosController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $contato = Contato::findOrFail($id);
+            $contato->delete();
+            return response()->json(['message' => 'Contato excluído com sucesso']);
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Erro ao deletar contato: ' . $e->getMessage()], 404);
+        }
     }
 }

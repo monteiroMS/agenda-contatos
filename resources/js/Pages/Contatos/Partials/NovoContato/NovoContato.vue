@@ -23,11 +23,13 @@ import { Plus } from 'lucide-vue-next'
 import { schema } from './schema'
 import axios from 'axios'
 import { ref } from 'vue'
+import { ReloadIcon } from '@radix-icons/vue'
 
 const loadingCep = ref(false)
 const formRef = ref(null)
+const loadingSave = ref(false)
 
-async function buscaCep(cep) {
+const buscaCep = async (cep) => {
     if (cep?.length == 9) {
         loadingCep.value = true
         try {
@@ -46,6 +48,21 @@ async function buscaCep(cep) {
         } finally {
             loadingCep.value = false
         }
+    }
+}
+
+const onSubmit = async (form) => {
+    try {
+        loadingSave.value = true
+        await axios.post(route('contatos.create'), form)
+    } catch (error) {
+        toast({
+            title: 'Erro ao salvar dados do contato',
+            description: error.response.data.message,
+            status: 'error',
+        })
+    } finally {
+        loadingSave.value = false
     }
 }
 </script>
@@ -216,8 +233,9 @@ async function buscaCep(cep) {
         </form>
 
         <DialogFooter>
-          <Button type="submit" form="dialogForm">
-            Salvar
+          <Button type="submit" form="dialogForm" :disabled="loadingSave">
+            <ReloadIcon v-if="loadingSave" class="w-4 h-4 mr-2 animate-spin" />
+            {{ loadingSave ? 'Salvando contato' : 'Salvar' }}
           </Button>
         </DialogFooter>
       </DialogContent>

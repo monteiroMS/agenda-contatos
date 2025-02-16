@@ -22,7 +22,7 @@ import Toaster from '@/components/ui/toast/Toaster.vue'
             <nav class="grid items-start px-2 text-sm font-medium lg:px-4">
                 <Link
                 href="/"
-                :class="$page.url === '/' ? 'bg-muted text-primary' : 'text-muted-foreground'"
+                :class="$page.url === '/contatos' ? 'bg-muted text-primary' : 'text-muted-foreground'"
                 class="flex items-center gap-3 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary"
                 >
                 <Home class="h-4 w-4" />
@@ -64,7 +64,7 @@ import Toaster from '@/components/ui/toast/Toaster.vue'
                 </Link>
                 <Link
                     href="/"
-                    :class="$page.url === '/' ? 'bg-muted text-primary' : 'text-muted-foreground'"
+                    :class="$page.url === '/contatos' ? 'bg-muted text-primary' : 'text-muted-foreground'"
                     class="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
                 >
                     <Home class="h-5 w-5" />
