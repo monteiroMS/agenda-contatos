@@ -2,10 +2,11 @@
 import { Head } from '@inertiajs/vue3'
 import Layout from '../../Layout/App.vue'
 import TabelaContatos from './Partials/TabelaContatos.vue'
-import { provide, ref, watch } from 'vue'
+import { provide, ref } from 'vue'
 import NovoContato from './Partials/NovoContato/NovoContato.vue'
 import { Plus } from 'lucide-vue-next'
 import Button from '@/components/ui/button/Button.vue'
+import ExcluirContato from './Partials/ExcluirContato.vue'
 
 const props = defineProps({
     contatos: {
@@ -40,6 +41,7 @@ const selectContact = (contato, action) => {
 
 provide('contatos', props.contatos)
 provide('isModalNovoContatoOpen', isModalNovoContatoOpen)
+provide('isModalDeleteOpen', isModalDeleteOpen)
 provide('modalNovoMode', modalNovoMode)
 provide('contatoSelecionado', contatoSelecionado)
 provide('selectContact', selectContact)
@@ -49,6 +51,7 @@ provide('selectContact', selectContact)
     <Layout>
         <Head title="Meus contatos | Agenda de contatos" />
         <NovoContato />
+        <ExcluirContato />
         <div class="flex items-center justify-between">
             <h1 class="text-lg font-semibold md:text-2xl">
                 Contatos
