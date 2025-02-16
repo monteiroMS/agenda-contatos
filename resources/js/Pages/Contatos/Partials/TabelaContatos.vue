@@ -41,7 +41,7 @@ const selectContact = inject('selectContact')
                 </TableRow>
             </TableHeader>
             <TableBody>
-                <TableRow v-for="contato in contatos">
+                <TableRow v-for="contato in contatos.data">
                     <TableCell class="hidden sm:table-cell text-center">
                         <SquareUserRound class="h-8 w-8 mx-auto" />
                     </TableCell>
@@ -84,8 +84,7 @@ const selectContact = inject('selectContact')
             </TableBody>
         </Table>
         <Pagination
-            :list="contatos"
-            :total="contatos.length"
+            :meta="contatos.meta"
         />
     </div>
 </template>

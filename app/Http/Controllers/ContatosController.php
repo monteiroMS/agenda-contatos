@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Contato\AtualizaContatoRequest;
 use App\Http\Requests\Contato\CriaContatoRequest;
+use App\Http\Resources\ContatoResource;
 use App\Models\Contato;
 use Inertia\Inertia;
 
@@ -14,9 +15,10 @@ class ContatosController extends Controller
      */
     public function index()
     {
-        $contatos = Contato::all();
         return Inertia::render('Contatos/Contatos', [
-            'contatos' => $contatos
+            'contatos' => ContatoResource::collection(
+                Contato::orderBy('nome')->paginate(10)
+            )
         ]);
     }
 
