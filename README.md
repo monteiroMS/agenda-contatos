@@ -25,6 +25,10 @@ Este projeto utiliza Docker para gerenciamento de containers. Para rodar o app l
   
 2. Tenha o Node instalado em sua máquina. Caso não tenha, você pode seguir a documentação oficial do Node para instalação:
    - [Documentação do Node](https://nodejs.org/pt)
+  
+3. Tenha o Laravel/Composer instalado em sua máquina. Caso não tenha, você pode seguir a documentação oficial do Laravel para instalação:
+   - [Documentação do Laravel](https://laravel.com/docs/11.x/installation)
+
 
 ### Passos para rodar
 
