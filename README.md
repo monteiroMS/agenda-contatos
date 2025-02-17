@@ -22,6 +22,9 @@ Este projeto utiliza Docker para gerenciamento de containers. Para rodar o app l
 1. Tenha o Docker e o Docker Compose instalados em sua máquina. Caso não tenha, você pode seguir a documentação oficial do Docker para instalação:
    - [Documentação do Docker](https://docs.docker.com/get-docker/)
    - [Documentação do Docker Compose](https://docs.docker.com/compose/install/)
+  
+2. Tenha o Node instalado em sua máquina. Caso não tenha, você pode seguir a documentação oficial do Node para instalação:
+   - [Documentação do Node](https://nodejs.org/pt)
 
 ### Passos para rodar
 
@@ -38,15 +41,30 @@ Este projeto utiliza Docker para gerenciamento de containers. Para rodar o app l
    cp .env.example .env
    ```
 
-3. Suba os containers com o Docker:
+3. Gere a chave da aplicação:
+
+   No terminal e rode o comando:
 
    ```bash
-   docker-compose up -d
+   php artisan key:generate
    ```
 
-   Isso iniciará o container com o Laravel e o MySQL.
+4. Suba os containers com o Docker:
 
-4. Instale as dependências do frontend:
+   ```bash
+   ./vendor/bin/sail up -d
+   ```
+
+   Isso iniciará os containers com o Laravel e o MySQL.
+
+5. Execute a migração do banco de dados:
+
+   Antes de rodar o frontend, é necessário rodar as migrações para criar as tabelas no banco de dados:
+
+   ```bash
+   php artisan migrate
+
+6. Instale as dependências do frontend:
 
    Abra um novo terminal e rode:
 
@@ -54,7 +72,7 @@ Este projeto utiliza Docker para gerenciamento de containers. Para rodar o app l
    npm install
    ```
 
-5. Para rodar o app, execute o comando:
+7. Para rodar o app, execute o comando:
 
    ```bash
    npm run dev
