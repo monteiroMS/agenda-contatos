@@ -101,7 +101,7 @@ O banco de dados MySQL já está configurado dentro do container Docker. As cred
 Para popular a tabela de contatos com 200 registros fictícios, utilize o comando:
 
 ```bash
-   ./vendor/bin/sail artisan db:seed
+./vendor/bin/sail artisan db:seed
 ```
 
 Esse comando irá gerar 200 contatos e permitir a paginação server-side dos itens na interface.
