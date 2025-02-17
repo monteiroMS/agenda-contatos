@@ -62,13 +62,16 @@ const onSubmit = async (form) => {
         }
 
         toast({ title: 'Contato salvo com sucesso!' })
+
+        setTimeout(() => {
+            window.location.reload()
+        }, 200);
     } catch (error) {
         toast({
             title: 'Erro ao salvar dados do contato',
             description: error.response.data.message,
             variant: 'destructive',
         })
-    } finally {
         loadingSave.value = false
     }
 }

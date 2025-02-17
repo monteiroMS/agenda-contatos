@@ -19,13 +19,16 @@ const confirmarExclusao = async () => {
         await axios.delete(route('contatos.delete', { id: contato.value.id }))
 
         toast({ title: 'Contato excluído com sucesso!' })
+
+        setTimeout(() => {
+            window.location.reload()
+        }, 200);
     } catch (error) {
         toast({
             title: 'Erro ao excluir contato',
             description: error.response.data.message,
             variant: 'destructive',
         })
-    } finally {
         loading.value = false
     }
 }
