@@ -1,66 +1,86 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# Agenda de Contatos
 
-## About Laravel
+Este é um aplicativo de agenda de contatos construído com **Laravel**, **Sail**, **Inertia.js**, **Vue.js**, **Shadcn UI Vue**, **TailwindCSS**, e **Zod** para validação de formulários. O app permite que os usuários realizem o CRUD (Criar, Ler, Atualizar, Deletar) de contatos de forma simples e eficaz.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Tecnologias Usadas
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Laravel** (com Sail para Docker)
+- **MySQL** (usado como banco de dados)
+- **Inertia.js** (para renderizar views no frontend)
+- **Vue.js** (para construção do frontend interativo)
+- **Shadcn UI Vue** (para componentes UI)
+- **TailwindCSS** (para estilização responsiva)
+- **Zod** (para validação de formulários)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Rodando o Projeto
 
-## Learning Laravel
+Este projeto utiliza Docker para gerenciamento de containers. Para rodar o app localmente, siga os passos abaixo:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Pré-requisitos
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+1. Tenha o Docker e o Docker Compose instalados em sua máquina. Caso não tenha, você pode seguir a documentação oficial do Docker para instalação:
+   - [Documentação do Docker](https://docs.docker.com/get-docker/)
+   - [Documentação do Docker Compose](https://docs.docker.com/compose/install/)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Passos para rodar
 
-## Laravel Sponsors
+1. Clone o repositório:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+   ```bash
+   git clone <url-do-repositorio>
+   cd <diretorio-do-repositorio>
+   ```
 
-### Premium Partners
+2. Suba os containers com o Sail:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+   ```bash
+   ./vendor/bin/sail up -d
+   ```
 
-## Contributing
+   Isso iniciará o container com o Laravel, MySQL e os outros serviços necessários.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. Instale as dependências do frontend:
 
-## Code of Conduct
+   Abra um novo terminal e rode:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+   ```bash
+   npm install
+   ```
 
-## Security Vulnerabilities
+4. Para rodar o app, execute o comando:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+   ```bash
+   npm run dev
+   ```
 
-## License
+   Isso iniciará o servidor de desenvolvimento e você poderá acessar o aplicativo no seu navegador em `http://localhost`.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### Banco de Dados
+
+O banco de dados MySQL já está configurado dentro do container Docker. As credenciais padrão são:
+
+- **Host**: `mysql`
+- **Usuário**: `root`
+- **Senha**: `root`
+
+### Popular Tabela de Contatos
+
+Para popular a tabela de contatos com 200 registros fictícios, utilize o comando:
+
+```bash
+./vendor/bin/sail php artisan db:seed
+```
+
+Esse comando irá gerar 200 contatos e permitir a paginação server-side dos itens na interface.
+
+### Funcionalidades
+
+- **Cadastro de Contatos**: Adicione novos contatos com nome, telefone, e-mail, etc.
+- **Leitura de Contatos**: Consulte todos os contatos cadastrados.
+- **Atualização de Contatos**: Altere as informações de um contato existente.
+- **Exclusão de Contatos**: Remova contatos da agenda.
+
+### Validação de Formulários
+
+A validação de formulários é feita com **Zod**, garantindo que todos os dados sejam validados antes de serem enviados ao backend.
