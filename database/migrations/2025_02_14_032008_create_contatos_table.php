@@ -24,7 +24,6 @@ return new class extends Migration
             $table->string('localidade');
             $table->string('uf');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
