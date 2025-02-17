@@ -1,11 +1,11 @@
 
 # Agenda de Contatos
 
-Este é um aplicativo de agenda de contatos construído com **Laravel**, **Sail**, **Inertia.js**, **Vue.js**, **Shadcn UI Vue**, **TailwindCSS**, e **Zod** para validação de formulários. O app permite que os usuários realizem o CRUD (Criar, Ler, Atualizar, Deletar) de contatos de forma simples e eficaz.
+Este é um aplicativo de agenda de contatos construído com **Laravel**, **Docker**, **Inertia.js**, **Vue.js**, **Shadcn UI Vue**, **TailwindCSS**, e **Zod** para validação de formulários. O app permite que os usuários realizem o CRUD (Criar, Ler, Atualizar, Deletar) de contatos de forma simples e eficaz.
 
 ## Tecnologias Usadas
 
-- **Laravel** (com Sail para Docker)
+- **Laravel** (com Docker)
 - **MySQL** (usado como banco de dados)
 - **Inertia.js** (para renderizar views no frontend)
 - **Vue.js** (para construção do frontend interativo)
@@ -32,15 +32,21 @@ Este projeto utiliza Docker para gerenciamento de containers. Para rodar o app l
    cd agenda-contatos
    ```
 
-2. Suba os containers com o Sail:
+2. Crie o arquivo `.env` copiando o conteúdo do arquivo `.env.example`:
 
    ```bash
-   ./vendor/bin/sail up -d
+   cp .env.example .env
    ```
 
-   Isso iniciará o container com o Laravel e do MySQL.
+3. Suba os containers com o Docker:
 
-3. Instale as dependências do frontend:
+   ```bash
+   docker-compose up -d
+   ```
+
+   Isso iniciará o container com o Laravel e o MySQL.
+
+4. Instale as dependências do frontend:
 
    Abra um novo terminal e rode:
 
@@ -48,7 +54,7 @@ Este projeto utiliza Docker para gerenciamento de containers. Para rodar o app l
    npm install
    ```
 
-4. Para rodar o app, execute o comando:
+5. Para rodar o app, execute o comando:
 
    ```bash
    npm run dev
@@ -69,7 +75,7 @@ O banco de dados MySQL já está configurado dentro do container Docker. As cred
 Para popular a tabela de contatos com 200 registros fictícios, utilize o comando:
 
 ```bash
-./vendor/bin/sail php artisan db:seed
+docker-compose exec app php artisan db:seed
 ```
 
 Esse comando irá gerar 200 contatos e permitir a paginação server-side dos itens na interface.
