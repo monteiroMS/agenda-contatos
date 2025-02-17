@@ -41,7 +41,15 @@ Este projeto utiliza Docker para gerenciamento de containers. Para rodar o app l
    cp .env.example .env
    ```
 
-3. Gere a chave da aplicação:
+3. Instale as dependências do backend:
+
+   No terminal e rode o comando:
+
+   ```bash
+   composer install
+   ```
+
+4. Gere a chave da aplicação:
 
    No terminal e rode o comando:
 
@@ -49,7 +57,7 @@ Este projeto utiliza Docker para gerenciamento de containers. Para rodar o app l
    php artisan key:generate
    ```
 
-4. Suba os containers com o Docker:
+5. Suba os containers com o Docker:
 
    ```bash
    ./vendor/bin/sail up -d
@@ -57,14 +65,14 @@ Este projeto utiliza Docker para gerenciamento de containers. Para rodar o app l
 
    Isso iniciará os containers com o Laravel e o MySQL.
 
-5. Execute a migração do banco de dados:
+6. Execute a migração do banco de dados:
 
    Antes de rodar o frontend, é necessário rodar as migrações para criar as tabelas no banco de dados:
 
    ```bash
-   php artisan migrate
+   ./vendor/bin/sail artisan migrate
 
-6. Instale as dependências do frontend:
+7. Instale as dependências do frontend:
 
    Abra um novo terminal e rode:
 
@@ -72,7 +80,7 @@ Este projeto utiliza Docker para gerenciamento de containers. Para rodar o app l
    npm install
    ```
 
-7. Para rodar o app, execute o comando:
+8. Para rodar o app, execute o comando:
 
    ```bash
    npm run dev
@@ -86,7 +94,7 @@ O banco de dados MySQL já está configurado dentro do container Docker. As cred
 
 - **Host**: `mysql`
 - **Usuário**: `root`
-- **Senha**: `root`
+- **Senha**: `password`
 
 ### Popular Tabela de Contatos
 
