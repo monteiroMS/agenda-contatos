@@ -38,7 +38,7 @@ Este projeto utiliza Docker para gerenciamento de containers. Para rodar o app l
    ./vendor/bin/sail up -d
    ```
 
-   Isso iniciará o container com o Laravel, MySQL e os outros serviços necessários.
+   Isso iniciará o container com o Laravel e do MySQL.
 
 3. Instale as dependências do frontend:
 
