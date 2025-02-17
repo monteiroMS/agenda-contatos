@@ -28,8 +28,8 @@ Este projeto utiliza Docker para gerenciamento de containers. Para rodar o app l
 1. Clone o repositório:
 
    ```bash
-   git clone <url-do-repositorio>
-   cd <diretorio-do-repositorio>
+   git clone git@github.com:monteiroMS/agenda-contatos.git
+   cd agenda-contatos
    ```
 
 2. Suba os containers com o Sail:
